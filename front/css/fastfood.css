@@ -293,7 +293,7 @@ body{
     align-items: center;
 }
 
-.restaurants_list_item-other-info .logo span{
+.restaurants_list_item-other-info .logo a{
     color:rgb(119, 119, 119);
     padding-left: 10px;
 }

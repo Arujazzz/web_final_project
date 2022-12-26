@@ -1,3 +1,28 @@
+<?php 
+	session_start(); 
+	require("../includes/connections.php"); 
+	if(isset($_GET['page'])){ 
+		 
+		$pages=array("restaurants", "cart"); 
+		 
+		if(in_array($_GET['page'], $pages)) { 
+			 
+			$_page=$_GET['page']; 
+			 
+		}else{ 
+			 
+			$_page="restaurants"; 
+			 
+		} 
+		 
+	}else{ 
+		 
+		$_page="restaurants"; 
+		 
+	} 
+ 
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,8 +115,7 @@
                     <div class="main-content-menu-img-otherinfo">
                         <p class="name-of-restaurant">Чибо Сано</p>
                         <div class="main-content-menu-img-otherinfo-items">
-                        <button 
-                        onclick="openCity(event, 'menu')" class="tablinks">
+                        <button onclick="openCity(event, 'menu')" class="tablinks">
                             МЕНЮ 
                         </button>
                         <button type="button" onclick="openCity(event, 'dostavka')" class="tablinks">
@@ -133,96 +157,68 @@
                             <div class="menu-right">
                                 <p id="kurochka">Курочка</p>
                                 <div class="menu-right-row">
-                                    <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food_new/6/650aa234-9da1-4b00-aa62-e0d1e0d45c96.jpeg">
-                                        <p>Куриные стрипсы, 8 шт</p>
-                                        <p>Куриное филе в панировке</p>
-                                        <p>1700 тг</p>
+                                <?php
 
-                                        <button>Добавить к заказу</button>
-                                    </div>
+                                $sql = "SELECT * FROM products WHERE type = 'kurochka' ";
+                                $query = mysqli_query($conn, $sql);
 
-                                    <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food_new/c/cc098e95-98dc-403d-8188-dfe8ded80167.jpeg">
-                                        <p>Куриные стрипсы, 12 шт</p>
-                                        <p>Куриное филе в панировке</p>
-                                        <p>2100 тг</p>
+                                while ($row = mysqli_fetch_array($query)){
+                                ?>
+                                <div class="menu-right-row-items">
+                                    <img src="<?php echo $row['product_image'] ?>">
+                                    <p><?php echo $row['name'] ?></p>
+                                    <p><?php echo $row['text'] ?></p>
+                                    <p><?php echo $row['price'] ?></p>
 
-                                        <button>Добавить к заказу</button>
-                                    </div>
-
-                                    <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food_new/d/d4895b8f-f40e-4bee-93f6-9c613e513134.jpeg">
-                                        <p>Шашлычки из курицы</p>
-                                        <p>Маринованное куриное филе в соусе "Терияки"</p>
-                                        <p>1 800 тг</p>
-
-                                        <button>Добавить к заказу</button>
-                                    </div>
-
+                                    <button>Добавить к заказу</button>
+                                </div>
+                                <?php
+                                }
+                                ?>
                                 </div>
 
                                 <p id="rolles">Роллы классические</p>
                                 <div class="menu-right-row">
+                                    <?php
+
+                                    $sql = "SELECT * FROM products WHERE type = 'sushi' ";
+                                    $query = mysqli_query($conn, $sql);
+
+                                    while ($row = mysqli_fetch_array($query)){
+                                    ?>
                                     <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food_new/d/d02b2d93-4691-45ab-adb8-6351bd59636c.jpeg">
-                                        <p>"Калифорния" с креветкой</p>
-                                        <p>Рис, креветки, авокадо, икра "Тобико", майонез, огурец, нори</p>
-                                        <p>1500 тг</p>
+                                        <img src="<?php echo $row['product_image'] ?>">
+                                        <p><?php echo $row['name'] ?></p>
+                                        <p><?php echo $row['text'] ?></p>
+                                        <p><?php echo $row['price'] ?></p>
 
                                         <button>Добавить к заказу</button>
                                     </div>
-
-                                    <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food_new/3/31fb5573-33e7-4234-a0cc-5455df27bfc9.jpeg">
-                                        <p>"Калифорния" с креветкой</p>
-                                        <p>Рис, креветки, авокадо, икра "Тобико", майонез, огурец, нори</p>
-                                        <p>2 500 тг</p>
-
-                                        <button>Добавить к заказу</button>
-                                    </div>
-
-                                    <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food_new/0/085b72ef-38ac-4f23-ace2-a8633322952f.jpeg">
-                                        <p>Калифорния</p>
-                                        <p>Рис, снежный краб, огурец, сливочный соус, нори, икра тобико</p>
-                                        <p>2 000 тг</p>
-
-                                        <button>Добавить к заказу</button>
-                                    </div>
-
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
 
 
                                 <p id="sets">Сеты</p>
                                 <div class="menu-right-row">
-                                    <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food/997499ca-0a8a-4be5-8851-04cfa05c68cd">
-                                        <p>Сет "Темпура"</p>
-                                        <p>Цезарь темпура, Тори спайс темпура, Гурман, Горячий лосось</p>
-                                        <p>6 300 тг</p>
+                                    <?php
+                                        $sql = "SELECT * FROM products WHERE type = 'set' ";
+                                        $query = mysqli_query($conn, $sql);
 
-                                        <button>Добавить к заказу</button>
-                                    </div>
+                                        while ($row = mysqli_fetch_array($query)){
+                                        ?>
+                                        <div class="menu-right-row-items">
+                                            <img src="<?php echo $row['product_image'] ?>">
+                                            <p><?php echo $row['name'] ?></p>
+                                            <p><?php echo $row['text'] ?></p>
+                                            <p><?php echo $row['price'] ?></p>
 
-                                    <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food_new/f/f76e44a6-29fc-4439-a133-86e6f215d7b7.jpeg">
-                                        <p>Банзай</p>
-                                        <p>олл "Филадельфия" - 8 шт, ролл "Планета Микс" - 8 шт, ролл "Нами" - 8 шт, ролл</p>
-                                        <p>12 000 тг</p>
-
-                                        <button>Добавить к заказу</button>
-                                    </div>
-
-                                    <div class="menu-right-row-items">
-                                        <img src="https://sc01.chocofood.kz/hermes/food_new/f/f8e4698d-e6f0-4095-af62-0b8ccc729731.jpeg">
-                                        <p>Запеченный</p>
-                                        <p>Ролл "Филадельфия Хот" - 8 шт, ролл "Калифорния Хот" - 8 шт, ролл "Унаги Маки Хот" - 8 шт</p>
-                                        <p>6 200 тг</p>
-
-                                        <button>Добавить к заказу</button>
-                                    </div>
-
+                                            <button>Добавить к заказу</button>
+                                        </div>
+                                        <?php
+                                        }
+                                        ?>
                                 </div>
                                 
 
