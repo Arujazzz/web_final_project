@@ -30,7 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Меню - Chocofood.kz</title>
-    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/cart.css">
 </head>
 <body>
     <div class="before-top-bar">
@@ -257,10 +257,16 @@
                     <button>Очистить корзину</button>
                 </div>
         
-                <div class="main-content-korzina-items">
-                    <p>
-                        Корзина пуста
-                    </p>
+                <div class="cart">
+                    <div class="cart-items">
+                        <p>Куриные стрипсы, 8 шт</p>
+                        <p class="descrip">Изысканное комбо из холодных и теплых роллов дополнено классическим салатом "Цезарь" с курицей, не оставит равнодушны..</p>
+                        <p>1700 тг</p>
+                        <button class="decrease">-</button>
+                        <input type="text" name="quantity" value="1"></input>
+                        <button class="increase">+</button>
+
+                    </div>
                 </div>
 
                 <div class="main-content-korzina-items">

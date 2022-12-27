@@ -250,7 +250,7 @@ body{
 .main-content-korzina{
     margin-left: 770px;
     background-color: white;
-    height: 180px;
+    height: 230px;
     width: 230px;
     border-radius: 8px;
     box-shadow: 5px 5px 20px #6d6d6d;
@@ -480,4 +480,40 @@ footer{
     display: none;
 }
 
+.cart{
+    text-align: center;
+}
 
+.cart-items p{
+    font-weight: 600;
+    color: rgb(34, 33, 33);
+
+}
+.cart-items input{
+    width: 50px;
+    height: 18px;
+    border-radius: 10px;
+    border: rgb(118, 118, 118) 1px solid;
+    text-align: center; 
+}
+.cart-items button{
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    border:  rgb(118, 118, 118) 1px solid;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+}
+.increase{
+    background-color: rgb(21, 194, 61);
+    justify-content: center;
+}
+
+.decrease{
+    background-color:  rgb(118, 118, 118)
+}
+
+.descrip{
+    font-size: 10px;
+}
